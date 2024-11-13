@@ -40,7 +40,7 @@ import importlib
 import inspect
 import itertools
 import json
-from typing import List, Tuple, Union, Dict, Callable, Any, Iterable, Optional, TextIO
+from typing import List, Tuple, Union, Dict, Callable, Any, Iterable, Optional, TextIO, Literal
 import contextlib
 import os
 import pickle
@@ -1479,3 +1479,13 @@ def _get_metadata_and_state_dict(safetensor_file_path: str) -> [dict, dict]:
     state_dict = {k: torch.from_numpy(v) for k, v in state_dict.items()}
 
     return state_dict, meta_data
+
+
+def _get_default_api() -> Union[Literal["v1"], Literal["v2"]]:
+    default_api = os.getenv("AIMET_DEFAULT_API", "v1").lower()
+
+    if default_api not in ("v1", "v2"):
+        raise RuntimeError("Invalid value specified for environment variable AIMET_DEFAULT_API. "
+                           f"Expected either 'v1' or 'v2', but got '{default_api}'")
+
+    return default_api
