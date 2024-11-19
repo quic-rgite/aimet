@@ -1,0 +1,12 @@
+
+ aside.toc-drawer ul ul ul ul {
+   display: none;
+}
+
+.toctree-l3 {
+    display: none;
+}
+
+[for^="toctree-checkbox-"], [id^="toctree-checkbox-"] {
+    visibility: hidden;
+}

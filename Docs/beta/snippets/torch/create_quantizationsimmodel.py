@@ -2,7 +2,7 @@
 # =============================================================================
 #  @@-COPYRIGHT-START-@@
 #
-#  Copyright (c) 2024, Qualcomm Innovation Center, Inc. All rights reserved.
+#  Copyright (c) 2023, Qualcomm Innovation Center, Inc. All rights reserved.
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions are met:
@@ -34,7 +34,8 @@
 #
 #  @@-COPYRIGHT-END-@@
 # =============================================================================
-# pylint: disable=all
+# pylint: disable=missing-docstring
+
 from aimet_common.defs import QuantScheme
 from aimet_torch.v1.quantsim import QuantizationSimModel
 from aimet_torch.v1.adaround.adaround_weight import Adaround, AdaroundParameters
