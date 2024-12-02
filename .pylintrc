@@ -10,6 +10,8 @@ extension-pkg-whitelist=
 ignore=CVS,
        apply_adaround.py,
        apply_bnf.py,
+       apply_cle.py,       
+       apply_bn.py,
        create_quantizationsimmodel.py,
        evaluate.py,
        export.py,

@@ -1,8 +1,11 @@
-.. _apiref-keras-adaround:
+.. _apiref-tensorflow-adaround:
 
-#############################
-AIMET TensorFlow AdaRound API
-#############################
+#########################
+aimet_tensorflow.adaround
+#########################
+
+..
+  # start-after
 
 **Top-level API**
 
@@ -11,11 +14,4 @@ AIMET TensorFlow AdaRound API
 **Adaround Parameters**
 
 .. autoclass:: aimet_tensorflow.keras.adaround_weight.AdaroundParameters
-    :members:
-
-**Enum Definition**
-
-**Quant Scheme Enum**
-
-.. autoclass:: aimet_common.defs.QuantScheme
     :members:

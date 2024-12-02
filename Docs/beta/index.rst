@@ -10,14 +10,14 @@ AI Model Efficiency Toolkit Documentation
    :hidden:
    :includehidden:
 
-   Quick Start <../install/quick-start>
-   Installation <../install/index>
-   AIMET Optimization Guide <../opt-guide/index>
-   Quantization Simulation Guide <../quantsim/index>
-   AIMET Feature Guide <../featureguide/index>
-   Examples <../examples/index>
-   API Reference <../apiref/index>
-   Release Notes <../rn/index>
+   Quick Start <install/quick-start>
+   Installation <install/index>
+   User Guide <opt-guide/index>
+   Quantization Simulation Guide <quantsim/index>
+   Feature Guide <featureguide/index>
+   Examples <examples/index>
+   API Reference <apiref/index>
+   Release Notes <rn/index>
 
 AI Model Efficiency Toolkit (AIMET) is a software toolkit for quantizing and compressing models.
 
@@ -30,27 +30,30 @@ AIMET supports PyTorch, TensorFlow, and Keras models, and ONNX models with limit
 Quick Start
 ===========
 
-To install and get started as quickly as possibly using AIMET with PyTorch, see the :doc:`Quick Start guide <../install/quick-start>`.
+To install and get started as quickly as possibly using AIMET with PyTorch, see the :doc:`Quick start guide <../install/quick-start>`.
 
 Installation
 =============
 
 For other install options, including for TensorFlow and ONNX platforms or to run AIMET in a Docker container, see :doc:`Installation <../install/index>`.
 
-Optimization Guide
-==================
+User Guide
+==========
 
-For a high-level explanation of how to use AIMET to optimize a model, see the :doc:`Optimization User Guide <../opt-guide/index>`.
-
-Feature Guide
-=============
-
-For instructions on applying individual AIMET features, see the :doc:`Features User Guide <../featureguide/index>`.
+For a high-level explanation of how to use AIMET to optimize a model, see the :doc:`Optimization user guide <../opt-guide/index>`.
 
 Quantization Simulation Guide
 =============================
 
-Quantization simulation (QuantSim) provides an approximation of a quantized model by inserting quantization operations in a trained model. QuantSim enables application of optimization techniques to a model and testing of the resulting model before the model is exported.
+Quantization simulation (QuantSim) provides an approximation of a quantized model by inserting
+quantization operations in a trained model. QuantSim enables application of optimization
+techniques to a model and testing of the resulting model before the model is exported.
+See the doc :doc:`Quantization simulation guide <../quantsim/index>`
+
+Feature Guide
+=============
+
+For instructions on applying individual AIMET features, see the :doc:`Feature guide <../featureguide/index>`.
 
 Examples
 ========
@@ -60,12 +63,12 @@ To view end-to-end examples of model quantization and compression, and to downlo
 API Reference
 =============
 
-For a detailed look at the AIMET API, see the :doc:`API Reference <../apiref/index>`.
+For a detailed look at the AIMET API, see the :doc:`API reference <../apiref/index>`.
 
 Release Notes
 =============
 
-For information specific to this release, see :doc:`Release Notes <../rn/index>`.
+For information specific to this release, see :doc:`Release notes <../rn/index>`.
 
 
 | |project| is a product of |author|

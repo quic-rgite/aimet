@@ -16,7 +16,7 @@ The following figures illustrates how AdaRound might change the rounding of a qu
 .. image:: ../images/adaround.png
     :width: 600px
 
-See the :doc:`Optimization User Guide <../optimization/index>` for a discussion of the recommended sequence of all quantization techniques.
+See the :doc:`Optimization User Guide <../opt-guide/index>` for a discussion of the recommended sequence of all quantization techniques.
 
 
 Complementary techniques
@@ -79,16 +79,69 @@ Setup
     .. tab-item:: TensorFlow
         :sync: tf
 
+        .. container:: tab-heading
+
+            Load the model for adaptive rounding (AdaRound). In this code example, we will use MobileNetV2
+
         .. literalinclude:: ../snippets/tensorflow/apply_adaround.py
             :language: python
             :start-after: # pylint: disable=missing-docstring
+            :end-before: # End of model
+
+        **Output**
+        ::
+
+            Model: "mobilenetv2_1.00_224"
+            __________________________________________________________________________________________________
+             Layer (type)                   Output Shape         Param #     Connected to
+            ==================================================================================================
+             input_1 (InputLayer)           [(None, 224, 224, 3  0           []
+                                            )]
+
+             Conv1 (Conv2D)                 (None, 112, 112, 32  864         ['input_1[0][0]']
+                                            )
+
+             bn_Conv1 (BatchNormalization)  (None, 112, 112, 32  128         ['Conv1[0][0]']
+                                            )
+
+             Conv1_relu (ReLU)              (None, 112, 112, 32  0           ['bn_Conv1[0][0]']
+                                            )
+
+             expanded_conv_depthwise (Depth  (None, 112, 112, 32  288        ['Conv1_relu[0][0]']
+             wiseConv2D)                    )
+             ...
+
+        .. container:: tab-heading
+
+            For AdaRound optimization, an unlabeled dataset is required.
+            In this example, we will use the ImageNet validation data.
+
+        .. literalinclude:: ../snippets/tensorflow/apply_adaround.py
+            :language: python
+            :start-after: # Set up dataset
+            :end-before: # End of dataset
 
     .. tab-item:: ONNX
         :sync: onnx
 
+        .. container:: tab-heading
+
+            Load the model for adaptive rounding (AdaRound). In this code example, we will convert PyTorch MobileNetV2 to ONNX and use it in the subsequent code
+
         .. literalinclude:: ../snippets/onnx/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Set up model
+            :end-before: # End of model
+
+        .. container:: tab-heading
+
+            For AdaRound optimization, an unlabeled dataset is required.
+            In this example, we will use the ImageNet validation data.
+
+        .. literalinclude:: ../snippets/onnx/apply_adaround.py
+            :language: python
+            :start-after: # Set up dataloader
+            :end-before: # End of dataloader
 
 Step 1
 ~~~~~~
@@ -111,14 +164,16 @@ Apply AdaRound to the model.
 
         .. literalinclude:: ../snippets/tensorflow/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 1
+            :end-before: # End of step 1
 
     .. tab-item:: ONNX
         :sync: onnx
 
         .. literalinclude:: ../snippets/onnx/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 1
+            :end-before: # End of step 1
 
 Step 2
 ~~~~~~
@@ -141,14 +196,16 @@ Simulate quantization through AIMET's QuantSim
 
         .. literalinclude:: ../snippets/tensorflow/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 2
+            :end-before: # End of step 2
 
     .. tab-item:: ONNX
         :sync: onnx
 
         .. literalinclude:: ../snippets/onnx/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 2
+            :end-before: # End of step 2
 
 
 Step 3
@@ -172,14 +229,16 @@ Run evaluation on the model, which will yield its accuracy.
 
         .. literalinclude:: ../snippets/tensorflow/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 3
+            :end-before: # End of step 3
 
     .. tab-item:: ONNX
         :sync: onnx
 
         .. literalinclude:: ../snippets/onnx/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 3
+            :end-before: # End of step 3
 
 Step 4
 ~~~~~~
@@ -201,14 +260,16 @@ If AdaRound resulted in satisfactory accuracy, export the model.
 
         .. literalinclude:: ../snippets/tensorflow/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 4
+            :end-before: # End of step 4
 
     .. tab-item:: ONNX
         :sync: onnx
 
         .. literalinclude:: ../snippets/onnx/apply_adaround.py
             :language: python
-            :start-after: # pylint: disable=missing-docstring
+            :start-after: # Step 4
+            :end-before: # End of step 4
 
 If the model is still not accurate enough, the next step is typically to try :ref:`quantization-aware training <featureguide-qat>`.
 
@@ -223,16 +284,17 @@ API
         :sync: torch
 
         .. include:: ../apiref/torch/adaround.rst
-            :start-after: _apiref-torch-adaround:
+            :start-after: # start-after
 
     .. tab-item:: TensorFlow
         :sync: tf
 
         .. include:: ../apiref/tensorflow/adaround.rst
-           :start-after: _apiref-keras-adaround:
+           :start-after: # start-after
 
     .. tab-item:: ONNX
         :sync: onnx
 
         .. include:: ../apiref/onnx/adaround.rst
-           :start-after: _apiref-onnx-adaround:
+           :start-after: # start-after
+
